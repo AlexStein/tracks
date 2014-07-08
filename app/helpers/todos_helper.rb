@@ -24,7 +24,7 @@ module TodosHelper
   def show_grouped_todos(settings = {})
     collection = (@group_view_by == 'context') ? @contexts_to_show : @projects_to_show
     render(:partial => collection, :locals => { :settings => settings.reverse_merge!({
-      :collapsible => true, 
+      :collapsible => true,
       :show_empty_containers => @show_empty_containers,
       :parent_container_type => @group_view_by
     })})
@@ -32,9 +32,9 @@ module TodosHelper
 
   def default_collection_settings
     {
-      :suppress_context => false, 
+      :suppress_context => false,
       :suppress_project => false,
-      :collapsible => false, 
+      :collapsible => false,
       :append_descriptor => nil,
       :parent_container_type => nil,
       :show_empty_containers => true
@@ -45,29 +45,29 @@ module TodosHelper
     settings[:container_name] = "completed"
     settings[:link_in_header] = link_to(t('common.show_all'), determine_done_path)
 
-    render :partial => 'todos/collection', 
-      :object => done_todos, 
+    render :partial => 'todos/collection',
+      :object => done_todos,
       :locals => {:settings => settings.reverse_merge!(default_collection_settings)}
   end
 
   def show_completed_todos_for(period, collection)
     settings = {
-      :parent_container_type => "completed", 
+      :parent_container_type => "completed",
       :container_name => "completed_#{period}",
       :title => t("todos.completed_#{period}"),
       :show_empty_containers => true
     }
 
-    render :partial => "todos/collection", 
-      :object => collection, 
+    render :partial => "todos/collection",
+      :object => collection,
       :locals => { :settings => settings}
   end
 
   def show_hidden_todos(hidden_todos, settings={})
     settings[:container_name] = "hidden"
 
-    render :partial => 'todos/collection', 
-      :object => hidden_todos, 
+    render :partial => 'todos/collection',
+      :object => hidden_todos,
       :locals => {:settings => settings.reverse_merge!(default_collection_settings)}
   end
 
@@ -75,16 +75,16 @@ module TodosHelper
     settings[:pending] = pending_todos
     settings[:container_name]="deferred_pending"
 
-    render :partial => "todos/collection", 
-      :object => deferred_todos+pending_todos, 
+    render :partial => "todos/collection",
+      :object => deferred_todos+pending_todos,
       :locals => {:settings => settings.reverse_merge!(default_collection_settings)}
   end
 
   def show_todos_without_project(todos_without_project, settings = {})
-    render :partial => 'todos/collection', 
-      :object => todos_without_project, 
-      :locals => {:settings => settings.reverse_merge!({ 
-        :collapsible => true, 
+    render :partial => 'todos/collection',
+      :object => todos_without_project,
+      :locals => {:settings => settings.reverse_merge!({
+        :collapsible => true,
         :container_name => "without_project",
         :parent_container_type => "home"
         })
@@ -101,9 +101,9 @@ module TodosHelper
       settings[:class] += " collapsible"
     end
 
-    content_tag(:div, 
-      :class=>settings[:class], 
-      :id=>settings[:id], 
+    content_tag(:div,
+      :class=>settings[:class],
+      :id=>settings[:id],
       :style => "display:" + (settings[:show_container] ? "block" : "none")) do
       yield
     end
@@ -133,10 +133,10 @@ module TodosHelper
   end
 
   def todos_calendar_container(period, collection)
-    render :partial => 'todos/collection', 
-      :object => collection, 
-      :locals => {:settings => { 
-        :collapsible => false, 
+    render :partial => 'todos/collection',
+      :object => collection,
+      :locals => {:settings => {
+        :collapsible => false,
         :show_empty_containers => true,
         :container_name => "#{period}",
         :title =>t("todos.calendar.#{period}", :month => l(Time.zone.now, :format => "%B"), :next_month => l(1.month.from_now, :format => "%B"))
@@ -208,7 +208,7 @@ module TodosHelper
     link = link_to(
       image_tag( 'blank.png', :width=>'16', :height=>'16', :border=>'0' ),
       "#",
-      {:class => 'show_notes', :title => 'Show notes'})
+      {:class => 'show_notes', :title => t('todos.show_notes')})
     notes = content_tag(:div, {
       :class => "todo_notes",
       :id => dom_id(todo, 'notes'),
@@ -217,7 +217,7 @@ module TodosHelper
   end
 
   def collapsed_successors_image(todo)
-    link = link_to(image_tag( 'blank.png', :width=>'16', :height=>'16', :border=>'0' ), "#", {:class => 'show_successors', :title => 'Show successors'})
+    link = link_to(image_tag( 'blank.png', :width=>'16', :height=>'16', :border=>'0' ), "#", {:class => 'show_successors', :title => t('todos.show_successors')})
     successors = content_tag(:div, {:class => "todo_successors", :id => dom_id(todo, 'successors'), :style => "display:none"}) do
       render :partial => "todos/successor", :collection => todo.pending_successors,
         :locals => { :parent_container_type => parent_container_type, :suppress_dependencies => true, :predecessor => todo }
@@ -374,7 +374,7 @@ module TodosHelper
       # due 2-7 days away
     when 2..7
       if prefs.due_style == Preference.due_styles[:due_on]
-        show_date_tag(d, :orange, t('todos.show_on_date', :date => d.strftime("%A")) )
+        show_date_tag(d, :orange, t('todos.show_on_date', :date => l(d, :format => "%A")) )
       else
         show_date_tag(d, :orange, t('todos.show_in_days', :days => days.to_s) )
       end
@@ -456,7 +456,7 @@ module TodosHelper
       content_tag(:div, "#{t('common.project')}:  #{project_link}") + "\n" +
       content_tag(:div, "#{t('common.context')}:  #{context_link}")
   end
-  
+
   # === handle CRUD actions for todos
 
   def show_todo_on_current_context_page
@@ -465,11 +465,11 @@ module TodosHelper
 
   def todo_should_not_be_hidden_on_context_page
     return !@todo.hidden? ||                        # todo is not hidden --> show
-           (@todo.hidden? && @todo.context.hidden?) # todo is hidden, but context is hidden too --> show          
+            (@todo.hidden? && @todo.context.hidden?) # todo is hidden, but context is hidden too --> show
   end
 
   def show_todo_on_current_project_page
-    return @todo.project.id == @default_project.id
+    return @todo.project_id == @default_project.id
   end
 
   def todo_should_not_be_hidden_on_project_page
@@ -527,12 +527,12 @@ module TodosHelper
         @tag_was_removed                                                                  ||
         @todo_was_destroyed                                                               ||
         (@todo.completed? && !(@original_item_was_deferred || @original_item_was_hidden || @original_item_was_pending))
-      ) 
+      )
     end
 
     return false if source_view_is_one_of(:calendar, :done, :all_done)
 
-    return @remaining_in_context == 0 
+    return @remaining_in_context == 0
   end
 
   def update_needs_to_remove_todo_from_container
@@ -584,9 +584,9 @@ module TodosHelper
 
   def should_show_empty_container
     source_view do |page|
-      page.context { return @remaining_in_context == 0 } 
+      page.context { return @remaining_in_context == 0 }
     end
-    return @down_count==0 
+    return @down_count==0
   end
 
   def project_container_id(todo)
@@ -613,7 +613,7 @@ module TodosHelper
   end
 
   def todo_container_empty_id(todo)
-    raise Exception.new, "no todo set in TodosHelper::todo_container_empty_id. You probably did not assign @original_item" if !todo    
+    raise Exception.new, "no todo set in TodosHelper::todo_container_empty_id. You probably did not assign @original_item" if !todo
     @group_view_by == "project" ? project_container_empty_id(todo) : context_container_empty_id(todo)
   end
 
@@ -624,7 +624,7 @@ module TodosHelper
     return "deferred_pending_container" if !source_view_is(:todo) && (todo.deferred? || todo.pending?)
     return "completed_container"        if todo.completed?
     return project_container_id(todo)   if source_view_is_one_of(:todo, :tag, :project, :context) && @group_view_by == 'project'
-    return context_container_id(todo)           
+    return context_container_id(todo)
   end
 
   def empty_container_msg_div_id(todo = @todo || @successor)
@@ -649,7 +649,7 @@ module TodosHelper
         return todo_container_empty_id(todo)
       }
       page.todo {
-        return todo_container_empty_id(todo) 
+        return todo_container_empty_id(todo)
       }
       page.deferred {
         return todo_container_empty_id(todo)

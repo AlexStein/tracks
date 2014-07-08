@@ -14,7 +14,7 @@
 
   <label for="context_hide"><%= t 'contexts.context_state' %> </label><br/>
   <% ['active', 'hidden', 'closed'].each do | state | %>
-    <%= radio_button(:context, 'state', state, {:tabindex => next_tab_index}) %> <%= state.titlecase %>
+    <%= radio_button(:context, 'state', state, {:tabindex => next_tab_index}) %> <%= t('states.'+state) %>
   <% end %>
   </br></br>
 
@@ -33,4 +33,3 @@
   <br/><br/>
 
 <% end %>
-

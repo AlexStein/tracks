@@ -1,0 +1,1096 @@
+---
+ru:
+  number:
+    format:
+      separator: .
+      precision: 3
+      delimiter: ","
+    human:
+      format:
+        precision: 1
+        delimiter: ""
+      storage_units:
+        format: "%n %u"
+        units:
+          kb: Кб
+          tb: Тб
+          gb: Гб
+          byte:
+            one: "байт"
+            few: "байта"
+            other: "байт"
+          mb: Мб
+    percentage:
+      format:
+        delimiter: ""
+    currency:
+      format:
+        format: "%u%n"
+        unit: $
+        separator: .
+        precision: 2
+        delimiter: ","
+    precision:
+      format:
+        delimiter: ""
+  activerecord:
+    attributes:
+      project:
+        name: "Имя"
+        default_tags: "Метки по-умолчанию"
+        default_context_name: "Контекст по-умолчанию"
+        description: "Описание"
+        project_status: "Состояние проекта"
+      todo:
+        predecessors: "Зависит от"
+        show_from: "Показывать c"
+        notes: "Заметки"
+        project: "Проект"
+        context: "Контекст"
+        description: "Описание"
+        due: "Выполнить к"
+        tags: "Метки"
+      user:
+        last_name: "Фамилия"
+        first_name: "Имя"
+        login: "Пользователь"
+        password: "Пароль"
+      preference:
+        show_hidden_projects_in_sidebar: "Отображать скрытые проекты в боковой панели"
+        date_format: "Формат даты"
+        show_hidden_contexts_in_sidebar: "Отображать скрытые контексты в боковой панели"
+        mobile_todos_per_page: "Действий на страницу (мобильная версия)"
+        verbose_action_descriptors: "Подробные описания действий"
+        staleness_starts: "Начало устаревания"
+        review_period: "Период обзора проектов"
+        sms_context: "Контекст email по-умолчанию"
+        title_date_format: "Формат даты в заголовке"
+        show_number_completed: "Показывать количество выполненных действий"
+        refresh: "период обновления (в минутах)"
+        week_starts: "Неделя начинается с"
+        last_name: "Фамилия"
+        locale: "Язык"
+        due_style: "Стиль даты 'Выполнить к'"
+        time_zone: "Часовой пояс"
+        show_project_on_todo_done: "Переходить на страницу проекта при выполнении задачи"
+        sms_email: "Отправитель email"
+        first_name: "Имя"
+        show_completed_projects_in_sidebar: "Отображать выполненные проекты в боковой панели"
+      note:
+        created_at: "Создано"
+        updated_at: "Обновлено"
+    errors:
+      messages:
+        greater_than_or_equal_to: "должно быть больше либо равно %{count}"
+        record_invalid: "Проверка не пройдена: %{errors}"
+        confirmation: "не совпадает с подтверждением"
+        less_than_or_equal_to: "должно быть меньше или равно %{count}"
+        blank: "не может быть пустым"
+        invalid: "не может содержать символ запятой (',')"
+        exclusion: "занято"
+        odd: "должно быть нечетным"
+        even: "должно быть четным"
+        too_short: "слишком короткое (минимум %{count} символов)"
+        empty: "не может быть пустым"
+        wrong_length: "неверной длины (должно быть %{count} символов)"
+        less_than: "должно быть меньше %{count}"
+        greater_than: "должно быть больше %{count}"
+        equal_to: "должно быть равно %{count}"
+        accepted: "должно быть подтверждено"
+        too_long: "слишком длинное (максимум %{count} символов)"
+        taken: "уже занято"
+        inclusion: "не входит в список"
+        not_a_number: "не является числом"
+      models:
+        project:
+          attributes:
+            name:
+              blank: "У проекта должно быть задано Имя"
+              too_long: "Имя проекта не более 256 символов"
+              taken: "уже существует"
+      full_messages:
+        format: "%{attribute} %{message}"
+      template:
+        body: "Возникли проблемы при обработке полей:"
+        header:
+          one: "1 ошибка мешает сохранению %{model}"
+          few: "%{count} ошибки мешают сохранению %{model}"
+          other: "%{count} ошибок мешают сохранению %{model}"
+  models:
+    project:
+      feed_title: "Проекты Tracks"
+      feed_description: "Список всех проектов %{username}"
+    todo:
+      error_date_must_be_future: "дата должна быть больше текущей"
+    user:
+      error_context_not_associated: "Идентификатор контекста %{context} не соответствует идентификатору пользователя %{user}."
+      error_project_not_associated: "Идентификатор проекта %{project} не соответствует идентификатору пользователя %{user}."
+    preference:
+      due_on: "Дата выполнения - %{date}"
+      due_in: "Выполнить за %{days} дней"
+      due_styles:
+      - Выполнить за ___ дней
+      - Выполнить к _______
+  datetime:
+    prompts:
+      minute: "Минута"
+      second: "Секунда"
+      month: "Месяц"
+      hour: "Час"
+      day: "День"
+      year: "Год"
+    distance_in_words:
+      less_than_x_minutes:
+        one: "меньше минуты"
+        few: "меньше %{count} минут"
+        other: "меньше %{count} минут"
+        zero: "меньше минуты"
+      x_days:
+        one: "1 день"
+        few: "%{count} дня"
+        other: "%{count} дней"
+      almost_x_years:
+        one: "почти 1 год"
+        few: "почти %{count} года"
+        other: "почти %{count} лет"
+      x_seconds:
+        one: "1 секунда"
+        few: "%{count} секунды"
+        other: "%{count} секунд"
+      about_x_hours:
+        one: "около 1 часа"
+        few: "около %{count} часов"
+        other: "около %{count} часов"
+      less_than_x_seconds:
+        one: "меньше 1 секунды"
+        few: "меньше %{count} секунд"
+        other: "меньше %{count} секунд"
+        zero: "меньше 1 секунды"
+      x_months:
+        one: "1 месяц"
+        few: "%{count} месяца"
+        other: "%{count} месяцев"
+      x_minutes:
+        one: "1 минута"
+        few: "%{count} минуты"
+        other: "%{count} минут"
+      about_x_years:
+        one: "около 1 года"
+        few: "около %{count} лет"
+        other: "около %{count} лет"
+      about_x_months:
+        one: "около 1 месяца"
+        few: "около %{count} месяцев"
+        other: "около %{count} месяцев"
+      over_x_years:
+        one: "белее 1 года"
+        few: "более %{count} лет"
+        other: "более %{count} лет"
+      half_a_minute: "пол минуты"
+  time:
+    am: am
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      time: ""
+      short: "%d %b %H:%M"
+      month_day: "%B %d"
+      long: "%B %d, %Y %H:%M"
+      stats: "%a %d-%m"
+    pm: pm
+  date:
+    month_names:
+    -
+    - января
+    - февраля
+    - марта
+    - апреля
+    - мая
+    - июня
+    - июля
+    - августа
+    - сентября
+    - октября
+    - ноября
+    - декабря
+    standalone_month_names:
+    -
+    - Январь
+    - Февраль
+    - Март
+    - Апрель
+    - Май
+    - Июнь
+    - Июль
+    - Август
+    - Сентябрь
+    - Октябрь
+    - Ноябрь
+    - Декабрь
+    abbr_day_names:
+    - Вс
+    - Пн
+    - Вт
+    - Ср
+    - Чт
+    - Пт
+    - Сб
+    order:
+    - :year
+    - :month
+    - :day
+    formats:
+      only_day: ""
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      month_day: ""
+      long: "%B %d, %Y"
+      longer: "%A %B %d, %Y"
+    day_names:
+    - воскресенье
+    - понедельник
+    - вторник
+    - среда
+    - четверг
+    - пятница
+    - суббота
+    standalone_day_names:
+    - Воскресенье
+    - Понедельник
+    - Вторник
+    - Среда
+    - Четверг
+    - Пятница
+    - Суббота
+    abbr_month_names:
+    -
+    - Янв
+    - Фев
+    - Мар
+    - Апр
+    - Май
+    - Июн
+    - Июл
+    - Авг
+    - Сен
+    - Окт
+    - Ноя
+    - Дек
+  support:
+    array:
+      words_connector: ", "
+      last_word_connector: ", и "
+      two_words_connector: " и "
+    select:
+      prompt: "Выберите..."
+  errors:
+    user_unauthorized: "401 Неавторизован: Только Администраторы имеют доступ к этой функции."
+  common:
+    back: "Назад"
+    third: "Третий"
+    recurring_todos: "Регулярные задачи"
+    actions: "Действия"
+    actions_midsentence:
+      zero: "действий"
+      one: "действие"
+      few: "действия"
+      other: "действий"
+    add: "Добавить"
+    previous: "Предыдущая"
+    show_all: "Показать все"
+    logout: "Выйти"
+    go_back: "Назад"
+    optional: "необязательно"
+    week: "неделя"
+    cancel: "Отмена"
+    none: "Не задано"
+    second: "Второй"
+    month: "месяц"
+    server_error: "Произошла ошибка на сервере."
+    notes: "Заметки"
+    review: "Обзор"
+    last: "Последние"
+    projects: "Проекты"
+    action: "Действие"
+    project: "Проект"
+    ok: ОК
+    contribute: "Сотрудничество"
+    website: "Веб-сайт"
+    first: "Первый"
+    numbered_step: "Шаг %{number}"
+    sort:
+      by_task_count_title: "Сортировать по количеству задач"
+      by_task_count_title_confirm: "Вы уверены, что хотите сортировать проекты по количеству задач? Это изменит текущий порядок сортировки."
+      alphabetically: "По алфавиту"
+      alphabetically_confirm: "Вы уверены, что хотите сортировать проекты по алфавиту? Это изменит текущий порядок сортировки."
+      alphabetically_title: "Сортировать проекты по алфавиту"
+      sort: "Сортировать"
+      by_task_count: "По количеству задач"
+    fourth: "Четвертый"
+    create: "Создать"
+    months: "месяца"
+    contexts: "Контексты"
+    errors_with_fields: "Возникли проблемы при обработке полей:"
+    next: "Следующая"
+    todo: "Задача"
+    note:
+      zero: "нет записей"
+      one: "1 запись"
+      few: "%{count} записи"
+      other: "%{count} записей"
+    context: "Контекст"
+    drag_handle: "ТАЩИТЬ"
+    description: "Описание"
+    bugs: "Ошибки"
+    update: "Обновить"
+    forth: "Четвертый"
+    weeks: "недели"
+    wiki: "Wiki"
+    email: "Email"
+    mailing_list: "Список рассылки"
+    search: "Поиск"
+    ajaxError: "От сервера была получена ошибка"
+    days_midsentence:
+      zero: "дней"
+      one: "день"
+      few: "дня"
+      other: "дней"
+    deferred: "отложенные"
+    not_available_abbr: "н/д"
+    collapse_expand: "Свернуть/развернуть"
+    reviewed: "Отметить просмотренным"
+  shared:
+    multiple_next_actions: "Несколько дальнейших действий (по одному на строке)"
+    hide_form: "Скрыть форму"
+    toggle_single: "Добавить дальнейшее действие"
+    add_action: "Добавить действие"
+    add_actions: "Добавить действия"
+    add_context: "Добавить контекст"
+    tags_for_all_actions: "Метки для всех действий (через запятую)"
+    toggle_single_title: "Добавить новое дальнейшее действие"
+    project_for_all_actions: "Проект для всех действий"
+    context_for_all_actions: "Контекст для всех действий"
+    toggle_multi: "Добавить несколько дальнейших действий"
+    separate_tags_with_commas: "через запятую"
+    toggle_multi_title: "Переключить режим ввода новых действий (одно/несколько)"
+    hide_action_form_title: "Скрыть форму нового действия"
+    make_actions_dependent: "Сделать действия зависимыми друг от друга"
+  states:
+    contexts:
+      hidden: "Скрытых контекстов"
+      active: "Активных контекстов"
+      closed: "Закрытых контекстов"
+    projects:
+      hidden: "Скрытых проектов"
+      active: "Активных проектов"
+      closed: "Закрытых проектов"
+    hidden_plural: "Скрытые"
+    completed: "Выполнен"
+    completed_plural: "Выполненные"
+    visible_plural: "Видимые"
+    visible: "Видимый"
+    close: "Закрытый"
+    closed_plural: "Закрытые"
+    active_plural: "Активные"
+    hidden: "Скрытый"
+    active: "Активный"
+    review_plural: "Просрочены"
+    review: "Просрочен"
+    stalled_plural: "Устаревшие"
+    stalled: "Устаревший"
+    blocked_plural: "Блокированные"
+    blocked: "Блокированный"
+    current_plural: "Актуальные"
+    current: "Актуальный"
+  layouts:
+    toggle_notes: "Видимость заметок"
+    toggle_contexts: "Видимость пересекающихся контекстов"
+    toggle_contexts_title: "Сделать пересекающиеся контексты (не)видимыми"
+    next_actions_rss_feed: "RSS-лента следующих действий"
+    toggle_notes_title: "Переключить видимость всех заметок"
+    mobile_navigation:
+      new_action: "Новый"
+      logout: "Выход"
+      feeds: "Рассылка"
+      full: "Полная версия"
+      starred: "Отмеченные"
+      projects: "Проекты"
+      tickler: "Отложенные"
+      contexts: "Контекст"
+      home: "Начало"
+    navigation:
+      manage_users_title: "Добавить или удалить пользователей"
+      recurring_todos: "Регулярные задачи"
+      api_docs: "Документация REST API"
+      feeds: "Ленты новостей"
+      starred: "Помеченные"
+      notes_title: "Показать все заметки"
+      review_title: "Сделать обзор"
+      stats: "Статистика"
+      tickler_title: "Отложенные"
+      manage_users: "Управление пользователями"
+      export_title: "Импорт и экспорт данных"
+      import_title: Import data
+      preferences: "Настройки"
+      integrations_: "Интеграция Tracks"
+      feeds_title: "Отобразить список доступных лент"
+      calendar_title: "Календарь обязательных действий"
+      completed_tasks: "Сделано"
+      stats_title: "Отобразить вашу статистику"
+      tickler: "Отложенные"
+      home_title: "Начало"
+      starred_title: "Отобразить ваши помеченные действия"
+      recurring_todos_title: "Управление регулярными задачами"
+      view: "Обзор"
+      organize: "Организация"
+      completed_tasks_title: "Выполненные"
+      home: "Начало"
+      export: "Экспорт"
+      import: Import
+      contexts_title: "Контексты"
+      calendar: "Календарь"
+      projects_title: "Проекты"
+      search: "Искать все"
+      preferences_title: "Показать мои настройки"
+      admin: "Администратор"
+      help: "?"
+      mobile: "Мобильная версия"
+      group_view_by_context: "Группировать по контексту"
+      group_view_by_project: "Группировать по проекту"
+      group_view_by_title: "Изменить группировку действий на этой странице"
+      show_empty_containers_project: "Отобразить пустые проекты"
+      show_empty_containers_context: "Отобразить пустые контексты"
+      show_empty_containers_title: "Показать/скрыть пустые проекты или контексты"
+  footer:
+    send_feedback: "Обратная связь. Версия %{version}"
+  sidebar:
+    list_name_active_contexts: "Активные контексты"
+    list_name_active_projects: "Активные проекты"
+    list_empty: "Пустой"
+    list_name_completed_projects: "Выполненные проекты"
+    list_name_hidden_projects: "Скрытые проекты"
+    list_name_hidden_contexts: "Скрытые контексты"
+  todos:
+    no_actions:
+      hidden: "На текущий момент не найдено скрытых действий"
+      tag_hidden: "На текущий момент не найдено скрытых действий"
+      without_project: "На текущий момент нет действий без проекта"
+      deferred_pending: "На текущий момент нет отложенных или ожидающих задач"
+      recurring_todos: "На текущий момент нет регулярных задач"
+      completed: "На текущий момент нет выполненных действий"
+      title: "Действий не найдено"
+      not_done_with_tag: "На текущий момент нет невыполненных действий с меткой '%{param}'"
+      not_done_project: Currently there are no incomplete actions in this project
+      not_done_context: Currently there are no incomplete actions in this context
+      completed_recurring: "На текущий момент нет выполненных регулярных задач"
+      not_done: "На текущий момент нет незавершенных действий"
+      project: "На текущий момент нет незавершенных действий в этом проекте"
+      context: "На текущий момент нет незавершенных действий в этом контексте"
+      completed_today: "Сегодня не было завершено ни одного действия"
+      completed_rest_of_week: "За остаток недели не было завершено ни одного действия"
+      completed_rest_of_month: "За остаток месяца не было завершено ни одного действия"
+      due_today: "Нет действий на сегодня"
+      due_this_week: "Нет действий на этой неделе"
+      due_next_week: "Нет действий на следующую неделю"
+      due_this_month: "Нет действий до конца месяца"
+      due_after_this_month: "Нет действий на следующий месяц и далее"
+    actions:
+      completed: "Выполненные действия"
+      home_completed: "Выполненные действия"
+      tag_completed: "Выполненные действия с меткой '%{param}'"
+      home_without_project: "Действия без проекта"
+      context_without_project: "Actions without project in %{param}"
+      project_project: "Действия в этом проекте"
+      project_deferred_pending: "Отложенные/ожидающие действия в этом проекте"
+      context_deferred_pending: "Отложенные/ожидающие действия в этом контексте"
+      tag_deferred_pending: "Отложенные/ожидающие действия с меткой '%{param}'"
+      project_completed: "Выполненные действия в этом проекте"
+      context_completed: "Выполненные действия в этом контексте"
+      tag_hidden: "Скрытые действия с меткой '%{param}'"
+    error:
+      invalid_due_date: "Invalid due date"
+      invalid_show_from_date: "Invalid show from date"
+    completed_today: "Выполнено сегодня"
+    completed_rest_of_week: "Выполнено за остаток недели"
+    completed_rest_of_month: "Выполнено за остаток месяца"
+    show_from: "Показывать с"
+    error_starring_recurring: "Невозможно установить/снять отметку регулярной задачи \'%{description}\'"
+    recurring_action_deleted: "Задача удалена. Но создана новая, так как это регулярная задача"
+    completed_recurring: "Выполненные регулярные задачи"
+    added_new_next_action: "Добавлено новое дальнейшее действие"
+    completed_rest_of_previous_month: "Выполнено в конце предыдущего месяца"
+    blocked_by: "Блокировано %{predecessors}"
+    star_action: "Отметить это действие"
+    completed_recurrence_completed: "Нет дальнейших действий, которые следуют за удаленной регулярной задачей. Повторение остановлено"
+    defer_date_after_due_date: "Дата отсрочки превышает дату выполнения. Измените дату выполнения, перед тем как отложить это действие."
+    unable_to_add_dependency: "Не удается добавить зависимость"
+    done: "Готово?"
+    star_action_with_description: "отметить действие '%{description}'"
+    tagged_with: "Установлена метка '%{tag_name}'"
+    completed: "Выполнено"
+    edit_action_with_description: "Редактировать действие '%{description}'"
+    action_due_on: "(действие выполнить к %{date})"
+    remove_dependency: "Удалить зависимость (не удаляет действий)"
+    archived_tasks_title: "TRACKS::Архивные выполненные задачи"
+    list_incomplete_next_actions: "Выводит список незавершенных дальнейших действий"
+    tags: "Метки (через запятую)"
+    action_deleted_success: "Успешно удалено дальнейшее действие"
+    new_related_todo_created: "Добавлена новая задача, принадлежащая этой регулярной задаче"
+    context_changed: "Контекст изменен на %{name}"
+    add_another_dependency: "Добавить еще зависимости"
+    mobile_todos_page_title: "Все действия"
+    delete_recurring_action_title: "Удалить регулярную задачу"
+    removed_predecessor: "Удалено %{successor} как зависимость от %{predecessor}."
+    recurring_actions_title: "TRACKS::Регулярные задачи"
+    next_action_needed: "Необходимо создать хотя бы одно дальнейшее действие"
+    action_saved: "Действие сохранено"
+    scheduled_overdue: "Запланировано к показу %{days} дней спустя"
+    action_deleted_error: "Не удалось удалить действие"
+    edit_action: "Редактирвоать действие"
+    added_new_context: "Добавлен новый контекст"
+    next_actions_description: "Фильтр:"
+    list_incomplete_next_actions_with_limit: "Выводит список последних %{count} незавершенных дальнейших действий"
+    set_to_pending: "%{task} поставлено в ожидание"
+    added_new_project: "Добавлен новый проект"
+    next_actions_title_additions:
+      completed: "действие выполнено"
+      due_today: "за сегодня"
+      due_within_a_week: "в пределах недели"
+    append_in_this_project: "в этом проекте"
+    error_deleting_item: "Произошла ошибка при удалении элемента %{description}"
+    task_list_title: "TRACKS::Список задач"
+    no_actions_due_this_week: "До конца недели нет действий"
+    error_completing_todo: "Ошибка выполнения/активации регулярной задачи %{description}"
+    recurring_pattern_removed: "Шаблон повтора удален из %{count}"
+    convert_to_project: "Сформировать проект"
+    delete_recurring_action_confirm: "Уверены, что хотите удалить регулярную задачу '%{description}'?"
+    completed_last_day: "Выполнены за последние 24 часа"
+    show_in_days: "Показать за %{days} дней"
+    no_project: "--Нет проекта--"
+    error_saving_recurring: "Ошибка при сохранении регулярной задачи \'%{description}\'"
+    new_related_todo_created_short: "создана новая задача"
+    all_completed: "Все выполненные действия"
+    feed_title_in_context: "в контексте '%{context}'"
+    completed_tagged_page_title: "TRACKS::Выполненные задачи с меткой '%{tag_name}'"
+    edit: "Редактировать"
+    pending: "Ожидание"
+    completed_actions_with: "Выполненные действия с меткой '%{tag_name}'"
+    deleted_success: "Действие успешно удалено."
+    completed_tasks_title: "TRACKS::Выполненные задачи"
+    feed_title_in_project: "в проекте '%{project}'"
+    clear_due_date: "Очистить дату 'Выполнить к'"
+    hidden_actions: "Скрытые действия"
+    error_removing_dependency: "Ошибка при удалении зависимости"
+    was_due_on_date: "было запланировано к %{date}"
+    show_on_date: "Дата показа - %{date}"
+    recurrence_period: "Период повторения"
+    deferred_actions_with: "Отложенные действия с меткой '%{tag_name}'"
+    recurring_deleted_success: "Регулярная задача успешно удалена."
+    confirm_delete: "Уверены, что хотите удалить действие '%{description}'?"
+    deferred_tasks_title: "TRACKS::Отложенные"
+    next_actions_title: "TRACKS::Дальнейшие действия"
+    next_action_description: "Описание дальнейшего действия"
+    clear_show_from_date: "Очистить дату 'Показывать с'"
+    calendar_page_title: "TRACKS::Календарь"
+    unresolved_dependency: "Введенное значение зависимости не соответствует существующим действиям. Значние не будет сохранно, как и другие изменения. Продолжить?"
+    in_hidden_state: "в скрытом состоянии"
+    show_today: "Сегодня"
+    next_actions_due_date:
+      overdue_by: "Просрочено на %{days} день"
+      due_today: "Выполнить сегодня"
+      due_in_x_days: "Выполнить за %{days} дней"
+      overdue_by_plural: "Просрочено на %{days} дней"
+      due_tomorrow: "Выполнить завтра"
+    completed_last_x_days: "Выполнены за последние %{count} дней"
+    defer_x_days:
+      one: "Отложить на 1 день"
+      few: "Отложить на %{count} дня"
+      other: "Отложить на %{count} дней"
+    added_new_next_action_singular: "Добавлено новое дальнейшее действие"
+    feeds:
+      completed: "Выполено: %{date}"
+      due: "Выполнить к: %{date}"
+    deferred_pending_actions: "Отложенные/ожидающие действия"
+    has_x_pending:
+      one: "Одно ожидающее действие"
+      few: "%{count} ожидающих действия"
+      other: "%{count} ожидающих действий"
+    delete_action: "Удалить действие"
+    error_deleting_recurring: "Возникла ошибка при удалении регулярной задачи \'%{description}\'"
+    recurring_todos: "Регулярные задачи"
+    delete: "Удалить"
+    cannot_add_dependency_to_completed_todo: "Невозможно добавить действие как зависимость к выполненному действию!"
+    drag_action_title: "Перетащите на другое действие, чтобы сделать его зависимым от него"
+    no_last_completed_actions: "Не найдено выполненных действий"
+    depends_on: "Зависит от"
+    tickler_items_due:
+      one: "Отложенный элемент подошел к дате выполнения - обновите страницу, чтобы увидеть изменения."
+      few: "%{count} отложенных элемента подошли к дате выполнения - обновите страницу, чтобы увидеть изменения."
+      other: "%{count} отложенных элементов подошли к дате выполнения - обновите страницу, чтобы увидеть изменения."
+    action_marked_complete: "Действие <strong>'%{description}'</strong> отмечено как <strong>%{completed}</strong>"
+    added_new_next_action_plural: "Добавлены новые дальнейшие действия"
+    new_related_todo_not_created_short: "не создана задача"
+    error_starring: "невозможно переключить отметку на задаче '%{description}'"
+    calendar:
+      get_in_ical_format: "Получить календарь в формате iCal"
+      due_next_week: "Выполнить за следующую неделю"
+      due_this_week: "Выполнить до конца недели"
+      due_today: "Выполнить сегодня"
+      due_this_month: "Выполнить до конца %{month}"
+      due_after_this_month: "Выполнить после %{month}"
+    show_tomorrow: "Показать завтрашний день"
+    tagged_page_title: "TRACKS::Помеченные меткой '%{tag_name}'"
+    action_deferred: "Действие '%{description}' было отложено"
+    mark_complete: "Отметить как выполненное"
+    recurrence:
+      ends_on_number_times: "Завершить после %{number} раз"
+      ends_on_date: "Завершить %{date}"
+      every_work_day: "Каждый будни день"
+      recurrence_on_due_date: "дата, на которую назначена задача"
+      weekly_options: "Настройки еженедельных регулярных задач"
+      weekly: "Еженедельно"
+      monthly_options: "Настройки ежемесячных регулярных задач"
+      starts_on: "Начать"
+      daily_options: "Настройки ежедневных регулярных задач"
+      monthly: "Ежемесячно"
+      pattern:
+        month_names:
+        -
+        - Январь
+        - Февраль
+        - Март
+        - Апрель
+        - Май
+        - Июнь
+        - Июль
+        - Август
+        - Сентябрь
+        - Октябрь
+        - Ноябрь
+        - Декабрь
+        third: "третий"
+        every_n: "каждый %{n}"
+        every_n_days: every %{n} days
+        every_n_months: every %{n} months
+        every_day: every day
+        on_day_n: "на день %{n}"
+        second: "второй"
+        every_xth_day_of_every_n_months: "каждые %{x} %{day} каждого %{n_months}"
+        from: с
+        weekly: "еженедельно"
+        last: "последний"
+        every_day: "ежедневно"
+        the_xth_day_of_month: "%{x} %{day} %{month}"
+        times: "%{number} раз"
+        on_work_days: "по рабочим дням"
+        first: "первый"
+        every_year_on: "каждый год %{date}"
+        day_names:
+        - воскресенье
+        - понедельник
+        - вторник
+        - среда
+        - четверг
+        - пятница
+        - суббота
+        show: "показать"
+        fourth: "четвертый"
+        due: к
+        until: "пока"
+        every_month: "ежемесячно"
+      show_option_always: "всегда"
+      daily: "Ежедневно"
+      yearly_every_x_day: "Каждый %{month} %{day}"
+      recurrence_on:
+        options: Use the calculated date to
+        due_date: set the actions due date
+        show_options: Show the action
+        show_always: always
+        show_days_before: "not until %{days} days before the due date"
+        from_tickler: set the date the action should be shown (do not set a due date)
+      daily_every_number_day: "Каждые %{number} дней"
+      show_options: "Показать задачи"
+      weekly_every_number_week: "Возвращаться каждые %{number} недель к"
+      ends_on: "Завершить"
+      no_end_date: No end date
+      show_days_before: "%{days} дней до выполнения задачи"
+      from_tickler: "дата выполнения взята из отложенных дел (дата выполнения не установлена)"
+      no_end_date: "Нет даты окончания"
+      day_x_on_every_x_month: "День %{day} каждый %{month} месяц"
+      yearly_options: "Настройки ранних регулярных задач"
+      yearly_every_xth_day: "%{day} %{day_of_week} %{month}"
+      monthly_every_xth_day: "%{day} %{day_of_week} каждого %{month} месяца"
+      yearly: "Ежегодно"
+    added_dependency: "Добавлена зависимость %{dependency}."
+    all_completed_tagged_page_title: "TRACKS::Все выполненные задачи с меткой %{tag_name}"
+    recurrence_completed: "Нет дальнейших действий, которые следуют за завершенной регулярной задачей. Повторение остановлено."
+    error_toggle_complete: "Невозможно отметить эту задачу как выполненную"
+    in_pending_state: "в ожидании"
+    due: "Выполнить к"
+    action_marked_complete_error: "Действие <strong>'%{description}'</strong> НЕ помечено как <strong>%{completed} из-за ошибки на сервере.</strong>"
+    depends_on_separate_with_commas: "Зависит от (через запятую)"
+    action_saved_to_tickler: "Действие сохранено в Отложенные"
+    recurring_action_saved: "Регулярная задача сохранена"
+    completed_in_archive:
+      one: "1 выполненное действие в архиве."
+      few: "%{count} выполненных действия в архиве."
+      other: "%{count} выполненных действий в архиве."
+    to_tickler: "в Отложенные"
+    next_actions_description_additions:
+      completed: "за последние %{count} дней"
+      due_date: "с запланированной датой %{due_date} или ранее"
+    overdue: "Просроченные"
+    add_new_recurring: "Добавить новую регулярную задачу"
+    edit_recurring_todo: "Редактировать регулярную задачу"
+    see_all_completed: "Все выполненные действия можно посмотреть здесь %{link}"
+    all_completed_here: "здесь"
+    show_notes: "Показать заметки"
+    show_successors: "Показать зависимые"
+    no_completed_actions: "На текущий момент нет выполненных действий"
+    no_recurring_actions: "На текущий момент нет регулярных задач"
+    no_completed_recurring: "На текущий момент нет выполненных задач"
+  contexts:
+    delete_context_title: "Удалить контекст"
+    all_completed_tasks_title: "TRACKS::Все выполненные действия в контексте '%{context_name}'"
+    hide_form: "Скрыть форму"
+    show_form_title: "Добавить контекст"
+    delete_context_confirmation: "Вы уверены, что хотите удалить контекст '%{name}'? Это удалит также все действия (дублирующиеся) в этом контексте!"
+    delete_context: "Удалить контекст"
+    edit_context: "Изменить контекст"
+    hide_form_title: "Скрыть форму нового контекста"
+    context_hide: "Скрыть с главной страницы?"
+    context_state: "Состояние контекста"
+    hidden_contexts: "Скрытые контексты"
+    no_contexts_active: "На текущий момент нет активных контекстов"
+    no_contexts_closed: "На текущий момент нет закрытых контекстов"
+    show_form: "Создать новый контекст"
+    visible_contexts: "Видимые контексты"
+    save_status_message: "Контекст сохранен"
+    add_context: "Добавить контекст"
+    context_name: "Имя контекста"
+    update_status_message: "Имя контекста было изменено"
+    completed_tasks_title: "TRACKS::Выполненные действия в контексте '%{context_name}'"
+    new_context_post: "' будет также создан. Вы уверены?"
+    status_active: "Контекст активен"
+    last_completed_in_context: "в этом контексте (осталось %{number})"
+    context_deleted: "Удален контекст '%{name}'"
+    no_contexts_hidden: "На текущий момент нет скрытых контекстов"
+    new_context_pre: "Новый контекст '"
+    status_hidden: "Контекст скрыт"
+    todos_append: "в этом контексте"
+    page_title: "TRACKS::Контекст: %{context}"
+    list_contexts: "TRACKS::Список контекстов"
+    list_actions: "TRACKS::Список действий в '%{context}'"
+  projects:
+    was_marked_hidden: "помечен как скрытый"
+    edit_project_title: "Редактировать проект"
+    default_tags_removed_notice: "Метки по-умолчанию удалены"
+    default_context_set: "Установить для проекта контекст %{default_context} по-умолчанию"
+    all_completed_tasks_title: "TRACKS::Список выполненных действий в проекте '%{project_name}'"
+    hide_form: "Скрыть форму"
+    page_title: "TRACKS::Проект: %{project}"
+    show_form_title: "Создать новый проект"
+    list_completed_projects: "TRACKS::Список выполненных проектов"
+    to_new_project_page: "Перейти на страницу нового проекта"
+    no_notes_attached: "На текущий момент нет примечаний присоединенных к проекту"
+    this_project: "Этот проект"
+    project_state: "Проект в состоянии %{state}."
+    last_completed_in_project: "(последние %{number})"
+    no_last_completed_projects: "Не найдено выполненных проектов"
+    notes: "Заметки"
+    no_last_completed_recurring_todos: "Не найдено выполненных регулярных задач"
+    notes_empty: "Нет заметок к этому проекту"
+    no_projects: "На текущий момент нет проектов"
+    hide_form_title: "Скрыть форму нового проекта"
+    with_no_default_context: "без контекста по-умолчанию"
+    delete_project: "Удалить проект"
+    show_form: "Добавить проект"
+    actions_in_project_title: "Действия проекта"
+    delete_project_confirmation: "Уверены, что хотите удалить проект '%{name}'?"
+    with_default_context: "с контекстом по-умолчанию '%{context_name}'"
+    set_default_tags_notice: "Установить метки %{default_tags} по-умолчанию для проекта"
+    is_active: "активен"
+    settings: "Настройки"
+    completed_projects: "Выполненные проекты"
+    with_default_tags: "и с меткой '%{tags}' по-умолчанию"
+    list_projects: "TRACKS::Список проектов"
+    list_reviews: "TRACKS::Обзор"
+    project_saved_status: "Проект сохранен"
+    add_project: "Добавить проект"
+    add_note: "Добавить заметку"
+    completed_tasks_title: "TRACKS::Список выполненных действий проекта '%{project_name}'"
+    delete_project_title: "Удалить проект"
+    hidden_projects: "Скрытые проекты"
+    add_note_submit: "Добавить заметку"
+    was_marked_complete: "помечен как выполненный"
+    default_context_removed: "Удален контекст по-умолчанию"
+    default_context: "Контекст по-умолчанию для этого проекта %{context}"
+    status_project_name_changed: "Имя проекта изменено"
+    active_projects: "Активные проекты"
+    no_default_context: "Этот проект не имеет контекста по-умолчанию"
+    with_no_default_tags: "и без меток по-умолчанию"
+    edit_project_settings: "Изменить настройки проекта"
+    state: "Проект в состояниии %{state}"
+  notes:
+    delete_confirmation: "Уверены, что хотите удалить заметку '%{id}'?"
+    delete_item_title: "Удалить элемент"
+    delete_note_title: "Удалить заметку '%{id}'"
+    note_link_title: "Показать заметку %{id}"
+    show_note_title: "Показать заметку"
+    deleted_note: "Удалено '%{id}'"
+    edit_item_title: "Редактировать элемент"
+    note_location_link: "В: "
+    no_notes_available: "На текущий момент заметок нет: добавьте заметки к проектам со страниц проектов."
+    note_header: "Заметка %{id}"
+    delete_note_confirm: "Уверены, что хотите удалить заметку '%{id}'?"
+    in_project: "В: "
+    all_notes: "TRACKS::Все заметки"
+    page_title: "TRACKS::Заметка %{note}"
+  integrations:
+    opensearch_description: "Искать в Tracks"
+    applescript_next_action_prompt: "Описание следующего действия:"
+    gmail_description: "Гаджет для добавления Tracks в Gmail как гаджета боковой панели"
+    applescript_success_after_id: "создано"
+    applescript_success_before_id: "Новое действие с ID"
+  preferences:
+    open_id_url: "Ваш OpenID URL "
+    staleness_starts_after: "Устаревание начинается после %{days} дней"
+    change_identity_url: "Изменить URL идентификации"
+    change_password: "Изменить пароль"
+    password_changed: "Пароль изменен, пожалуйста войдите снова."
+    updated: "Настройки изменены"
+    page_title: "TRACKS::Настройки"
+    title: "Ваши настройки"
+    token_description: "Ключ (используется для лент новостей и API)"
+    is_false: "Нет"
+    show_number_completed: "Отображать %{number} выполненных элементов"
+    page_title_edit: "TRACKS::Редактирование настроек"
+    is_true: "Да"
+    edit_preferences: "Изменить настройки"
+    sms_context_none: "Нет"
+    generate_new_token: "Создать новый ключ"
+    token_header: "Ваш ключ"
+    authentication_header: "Ваша авторизация"
+    current_authentication_type: "Ваш тип авторизации %{auth_type}"
+    change_authentication_type: "Изменить Ваш тип авторизации"
+    pick_one_of_the_following: "или выберите один из вариантов"
+    this_will_result_in: "Результат будет выглядеть так"
+    tabs:
+      authentication: "Авторизация"
+      tracks_behavior: "Поведение Tracks"
+      profile: "Профиль"
+      date_and_time: "Дата и время"
+    generate_new_token_confirm: "Вы уверены? Создание нового ключа, заменит текущий и нарушит все внешние взаимодействия, которые использовали предыдущий ключ."
+  data:
+    import_successful: "Импорт завершен."
+    import_errors: "При импорте произошли ошибки"
+    import_destination_invalid: Invalid import destination
+    page_title: TRACKS::Экспорт
+  stats:
+    index_title: "TRACKS::Статистика"
+    within_one: "В пределах 1"
+    tag_cloud_title: "Облако меток для всех действий"
+    tag_cloud_description: "Это облако меток для включает метки всех действий (выполненных, невыполенных, видимых или скрытых)"
+    tag_cloud_90days_title: "Облако меток для всех действий за последние 90 дней"
+    actions: "Действия"
+    totals_active_project_count: "Из них %{count} активных проектов"
+    actions_last_year_legend:
+      number_of_actions: "Количество действий"
+      months_ago: "Месяцев назад"
+    totals_first_action: "С первого действия %{date}"
+    actions_avg_completion_time: "Все ваши выполненные действия, среднее время выполнения %{count} дней."
+    top10_longrunning: "10 самых долгих проектов"
+    actions_dow_30days_title: "Дни недели (за последние 30 дней)"
+    legend:
+      actions: "Действия"
+      number_of_days: "Дней назад"
+      number_of_actions: "Количество действий"
+      day_of_week: "Дней недели"
+      percentage: "Процент"
+      running_time: "Затрачено времени на задачу (недель)"
+      months_ago: "Месяцев назад"
+    current_running_time_of_incomplete_visible_actions: "Текущее время работы над незавершенными видимыми действиями"
+    open_per_week: "Активные (видимые и скрытые) дальнейшие действия за неделю"
+    open_per_week_legend:
+      actions: "Действия"
+      weeks: "Недель назад"
+    totals_deferred_actions: "из которых %{count} отложенные действия"
+    running_time_legend:
+      actions: "Действия"
+      percentage: "Процент"
+      weeks: "Время выполнения действия (недель). Кликните на панель для дополнительной информации"
+    totals_action_count: "У вас всего %{count} действий"
+    totals_incomplete_actions: "У Вас %{count} незавершенных действий"
+    totals_unique_tags: "Из этих меток, %{count} уникальные."
+    actions_avg_completed_30days: "выполнено в среднем %{count} действий в день."
+    top5_contexts: "Топ 5 контекстов"
+    actions_lastyear_title: "Действия за последние 12 месяцев"
+    totals_actions_completed: "%{count} из них выполнены."
+    totals_context_count: "У Вас %{count} контекстов."
+    totals_visible_context_count: "Из них %{count} видимые контексты"
+    totals_blocked_actions: "%{count} зависят от выполнения связанных действий."
+    projects: "Проекты"
+    action_completion_time_title: "Время выполнения (все выполненные действия)"
+    actions_last_year: "Действия за последние годы"
+    actions_min_max_completion_days: "Минимум/максимум дней до выполнения %{min}/%{max}."
+    tags: "Метки"
+    actions_min_completion_time: "Минимальное время выполнения %{time}."
+    no_tags_available: "нет доступных меток"
+    actions_day_of_week_title: "День недели (все действия)"
+    totals_project_count: "У Вас %{count} проектов."
+    running_time_all: "Текущее время выполнения всех незавершенных действий"
+    actions_30days_title: "Действия за последние 30 дней"
+    time_of_day: "Время дня (все действия)"
+    totals_hidden_project_count: "%{count} скрыты"
+    tod30: "Время дней (последние 30 дней)"
+    tag_cloud_90days_description: "Это облако меток действия включает те, что были созданы или выполнены за последние 90 дней."
+    more_stats_will_appear: "Больше статистики появится здесь как только вы добавите действия."
+    top5_visible_contexts_with_incomplete_actions: "Топ 5 видимых контекстов с незавершенными действиями"
+    actions_further: " и далее"
+    totals_tag_count: "У Вас %{count} меток присвоено действиям."
+    top10_projects_30days: "Топ 10 проектов за последние 30 дней"
+    spread_of_running_actions_for_visible_contexts: "Распределение выполняемых действий для видимых контекстов"
+    actions_selected_from_week: "Действия, выбранные из недели "
+    spread_of_actions_for_all_context: "Распределение выполняемых действий для все контекстов"
+    click_to_show_actions_from_week: "Кликните %{link}, чтобы отобразить действия из %{week} недели и далее."
+    other_actions_label: "(другие)"
+    top10_projects: "Топ 10 проектов"
+    totals_completed_project_count: "и %{count} выполненных проектов."
+    actions_avg_created: "За последние 12 месяцев вы создали в среднем %{count} действий"
+    click_to_return: "Нажмите %{link}, чтобы вернуться к странице статистики."
+    actions_avg_completed: "и выполняли в среднем %{count} действий в месяц."
+    totals: "Итого"
+    time_of_day_legend:
+      number_of_actions: "Количество действий"
+      time_of_day: "Время дня"
+    contexts: "Контексты"
+    click_to_return_link: "здесь"
+    totals_hidden_context_count: "и %{count} скрытых контекстов."
+    labels:
+      month_avg_completed: "%{months} Выполнено в среднем за месяц"
+      completed: "Выполнено"
+      month_avg_created: "%{months} Создано в среднем за месяц"
+      avg_created: "В среднем создано"
+      avg_completed: "В среднем выполнено"
+      created: "Создано"
+    running_time_all_legend:
+      actions: "Действия"
+      percentage: "Процент"
+      running_time: "Время выполнения действия (недель). Нажмите на панель для более подробной информации."
+    click_to_update_actions: "Нажмите на панель в диаграмме, чтобы обновить действия ниже."
+    no_actions_selected: "Нет выбранных действий."
+    actions_actions_avg_created_30days: "За последние 30 дней вы создали в среднем %{count} действий"
+    actions_dow_30days_legend:
+      number_of_actions: "Количество действий"
+      day_of_week: "День недели"
+    actions_day_of_week_legend:
+      number_of_actions: "Количество действий"
+      day_of_week: "День недели"
+    tod30_legend:
+      number_of_actions: "Количество действий"
+      time_of_day: "Время дня"
+    action_selection_title: "TRACKS::Действие выбор"
+  users:
+    successfully_deleted_user: "Пользователь %{username} удален"
+    failed_to_delete_user: "Не удалось удалить пользователя %{username}"
+    total_contexts: "Всего контекстов"
+    first_user_heading: "Добро пожаловать в TRACKS. Для начала, создайте учетную запись Администратора:"
+    openid_url_verified: "Ваша ссылка %{url} подтверждена и установлена в качестве авторизации с OpenID."
+    auth_type_update_error: "Не удалось обновить ваш тип авторизации: %{error_messages}"
+    destroy_successful: "Пользователь %{login} удален"
+    new_token_generated: "Новый ключ успешно создан"
+    total_projects: "Всего проектов"
+    signup_successful: "Вход пользователя %{username} выполнен."
+    change_password_submit: "Сменить пароль"
+    no_signups_title: "TRACKS::Нет регистрации"
+    user_created: "Пользователь создан."
+    manage_users: "Управление пользователями"
+    account_signup: "регистрация пользователя"
+    password_updated: "пароль обновлен."
+    desired_login: "Предполагаемое имя пользователя"
+    signup: "Регистрация"
+    confirm_password: "Подтвердите пароль"
+    new_user_heading: "Создайте нового пользователя:"
+    auth_type_updated: "Тип авторизации обновлен."
+    total_actions: "Всего действий"
+    change_password_title: "TRACKS::Изменение пароля"
+    change_auth_type_title: "TRACKS::Изменение типа авторизации"
+    change_password_prompt: "Введите новый пароль в поле ниже и нажмите 'Изменить пароль', чтобы заменить ваш старый пароль."
+    password_confirmation_label: "Подтверждение пароля"
+    destroy_error: "Не удалось удалить пользователя %{login}"
+    choose_password: "Выберите пароль"
+    register_with_cas: "С вашим именем пользователя CAS"
+    label_auth_type: "Тип авторизации"
+    new_password_label: "Новый пароль"
+    you_have_to_reset_your_password: "Вы сбросили свой пароль"
+    first_user_title: "TRACKS::Войти как Администратор"
+    new_user_title: "TRACKS::Вход"
+    destroy_user: "Удалить пользователя"
+    total_users_count: "Всего %{count} пользователей"
+    destroy_confirmation: "Предупреждение: это действие удалит пользователя '%{login}', все его действия, контексты, проекты и примечания. Продолжить?"
+    signup_new_user: "Создать пользователя"
+    openid_ok_pref_failed: "Ваша ссылка %{url} подтверждена, но возникли проблемы при сохранении настроек авторизации."
+    identity_url: "URL идентификации"
+    auth_change_submit: "Сменить тип авторизации"
+    change_authentication_type: "Сменить тип авторизации"
+    total_notes: "Всего примечаний"
+    select_authentication_type: "Выберите новый тип авторизации и нажмите 'Сменить тип авторизации', чтобы заменить текущие настройки."
+    page_title: "TRACKS::Управление пользователями"
+  feedlist:
+    choose_context: "Выберите контекст для ленты новостей"
+    actions_due_today: "Действия за сегодня и ранее"
+    rss_feed: "RSS-лента"
+    ical_feed: "iCal-лента"
+    all_contexts: "Все контексты"
+    legend: "Легенда:"
+    all_projects: "Все проекты"
+    choose_project: "Выберите проект для ленты новостей"
+    select_feed_for_project: "Выберите ленту новостей для этого проекта"
+    active_projects_wo_next: "Активные проекты без дальнейших действий"
+    project_needed: "Должен быть выбран хотя бы один проект, чтобы можно было запросить ленту новостей"
+    active_starred_actions: "Все помеченные, активные действия"
+    select_feed_for_context: "Выберите ленту новостей для этого контекста"
+    projects_and_actions: "Активные проекты и действия по ним"
+    context_needed: "Должен быть выбран хотя бы один контекст, чтобы можно было запросить ленту новостей"
+    actions_due_next_week: "Действия за 7 дней или ранее"
+    notice_incomplete_only: "Внимание: Все ленты отображают только действия, которые не помечены как выполеннные, и только незавершенные состояния. Данные iCal-ленты могут быть добавлены в список задач. Если вы хотите отображать сроки выполнения задач в календаре, используйте iCal-ленту на странице календаря."
+    all_actions: "Все действия"
+    actions_completed_last_week: "Действия завершенные за последние 7 дней"
+    context_centric_actions: "Лента для незавершенных действий в определенном контексте"
+    plain_text_feed: "Лента в текстовом формате"
+    last_fixed_number: "Последние %{number} действий"
+    project_centric: "Лента для незавершенных действий в определенном проекте"
+  login:
+    login_cas: "перейти на CAS"
+    sign_in: "Войти"
+    openid_identity_url_not_found: "Извините, пользователя с такой ссылкой URL не существует (%{identity_url})"
+    user_no_expiry: "Оставаться"
+    cas_no_user_found: "Привет, %{username}! У Вас нет учетной записи на Tracks."
+    cas_login: "Вход CAS"
+    successful_with_session_info: "Вход выполнен:"
+    please_login: "Пожалуйста авторизуйтесь, чтобы использовать Tracks"
+    cas_logged_in_greeting: "Привет, %{username}! Вы авторизованы."
+    cas_username_not_found: "Извините, не существует пользователя для такого CAS (%{username})"
+    mobile_use_openid: "… или войдите при помощи OpenID"
+    cas_create_account: "Если вы хотите послать запрос, перейдите на %{signup_link}"
+    account_login: "Обычный вход"
+    cas_signup_link: "Запросить авторизацию"
+    session_will_not_expire: "сессия не будет истекать."
+    successful: "Вход успешен. С возвращением!"
+    option_separator: "или,"
+    session_time_out: "Сессия истекла. Пожалуйста %{link}"
+    session_will_expire: "сессия истекает после %{hours} часов отсутствия активности."
+    login_standard: "вернуться к обычному входу"
+    logged_out: "Вы вышли из Tracks."
+    login_with_openid: "войти с помощью OpenID"
+    unsuccessful: "Неудачная попытка входа."
+    log_in_again: "войти снова."
+    page_title: "TRACKS::Вход"
+  search:
+    contexts_matching_query: "Совпадающий контекст"
+    tags_matching_query: "Совпадающие тэги"
+    notes_matching_query: "Совпадающие заметки"
+    no_results: "Поиск не дал результатов."
+    todos_matching_query: "Совпадающие задачи"
+    projects_matching_query: "Совпадающие проекты"
+    page_title: "TRACKS::Поиск"
+    search_results: "TRACKS::Результаты поиска для %{search}"

@@ -403,7 +403,7 @@ en:
       completed_tasks_title: Completed
       home: Home
       export: Export
-      import: Import 
+      import: Import
       contexts_title: Contexts
       calendar: Calendar
       projects_title: Projects
@@ -690,6 +690,8 @@ en:
     edit_recurring_todo: Edit repeating action
     see_all_completed: You can see all completed actions %{link}
     all_completed_here: here
+    show_notes: Show notes
+    show_successors: Show successors
   contexts:
     delete_context_title: Delete context
     all_completed_tasks_title: "TRACKS::All Completed actions in the context '%{context_name}'"
@@ -719,6 +721,9 @@ en:
     new_context_pre: New context '
     status_hidden: Context is hidden
     todos_append: in this context
+    page_title: "TRACKS::Context: %{context}"
+    list_contexts: "TRACKS::List Contexts"
+    list_actions: "TRACKS::List actions in '%{context}'"
   projects:
     was_marked_hidden: has been marked as hidden
     edit_project_title: Edit project
@@ -782,6 +787,8 @@ en:
     note_header: Note %{id}
     delete_note_confirm: "Are you sure that you want to delete the note '%{id}'?"
     in_project: "In: "
+    all_notes: "TRACKS::All notes"
+    page_title: "TRACKS::Note %{note}"
   integrations:
     opensearch_description: Search in Tracks
     applescript_next_action_prompt: "Description of next action:"
@@ -809,6 +816,8 @@ en:
     authentication_header: Your authentication
     current_authentication_type: Your authentication type is %{auth_type}
     change_authentication_type: Change your authentication type
+    pick_one_of_the_following: Or pick one of the following
+    this_will_result_in: This will result in
     tabs:
       authentication: Authentication
       tracks_behavior: Tracks behavior
@@ -819,6 +828,7 @@ en:
     import_successful: Import was successful.
     import_errors: Some errors occurred during import
     import_destination_invalid: Invalid import destination
+    page_title: TRACKS::Export
   stats:
     index_title: TRACKS::Statistics
     within_one: Within 1
@@ -968,6 +978,7 @@ en:
     change_authentication_type: Change authentication type
     total_notes: Total notes
     select_authentication_type: Select your new authentication type and click 'Change authentication type' to replace your current settings.
+    page_title: "TRACKS::Manage Users"
   feedlist:
     choose_context: Choose the context you want a feed of
     actions_due_today: Actions due today or earlier
@@ -1017,6 +1028,7 @@ en:
     login_with_openid: login with an OpenID
     unsuccessful: Login unsuccessful.
     log_in_again: log in again.
+    page_title: TRACKS::Login
   search:
     contexts_matching_query: Contexts matching query
     tags_matching_query: Tags matching query
@@ -1024,3 +1036,5 @@ en:
     no_results: Your search yielded no results.
     todos_matching_query: Todos matching query
     projects_matching_query: Projects matching query
+    page_title: "TRACKS::Search"
+    search_results: "TRACKS::Search Results for %{search}"

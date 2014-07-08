@@ -333,6 +333,7 @@ class StatsController < ApplicationController
 
   def done
     @source_view = 'done'
+    @page_title = t('todos.completed_tasks_title')
 
     init_not_done_counts
 

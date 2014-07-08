@@ -1,6 +1,6 @@
 <%
   paginate_options = {
-    :class => :add_note_link, 
+    :class => :add_note_link,
     :previous_label => '&laquo; '+ t('common.previous'),
     :next_label     => t('common.next')+' &raquo;',
     :inner_window   => 2
@@ -10,7 +10,7 @@
   <div id="projects-empty-nd" style="<%= @no_projects ? 'display:block' : 'display:none'%>">
     <div class="message"><p><%= t('projects.no_projects') %></p></div>
   </div>
-  
+
   <div class="project-state-group" id="list-completed-projects-container" <%= " style=\"display:none\"" if @no_projects %>>
     <div class="paginate_header"><%= will_paginate @projects, paginate_options %></div>
     <h2>
@@ -25,7 +25,20 @@
 </div>
 
 <div id="input_box">
-  <div class="menu_sort"><h2><br/><%= t('common.sort.sort') %>&nbsp;<%= t('states.completed_plural' )%> <%= t('common.projects') %></h2>
+  <div class="menu_sort">
+    <h2><br/>
+      <%= t('common.sort.sort') %>
+      <% if I18n.locale == :fr %>
+        <%= t('common.projects').downcase %>
+        <%= t('states.completed_plural' ).downcase %>)%>
+      <% elsif I18n.locale == :ru %>
+        <%= t('states.completed_plural' ).mb_chars.downcase %>
+        <%= t('common.projects').mb_chars.downcase %>
+      <% else %>
+        <%= t('states.completed_plural' )%>
+        <%= t('common.projects') %>
+      <% end %>
+    </h2>
     <div class="alpha_sort">
       <%= link_to(t("common.sort.alphabetically"), alphabetize_projects_path(:state => :completed),
         :id => "completed_alphabetize_link", :class => "alphabetize_link", :title => t('common.sort.alphabetically_title'), :x_confirm_message => t('common.sort.alphabetically_confirm')) %>

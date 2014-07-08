@@ -52,8 +52,7 @@ module ApplicationHelper
           t('todos.next_actions_due_date.due_tomorrow')
         when 2..7
           if prefs.due_style == Preference.due_styles[:due_on]
-            # TODO: internationalize strftime here
-            t('models.preference.due_on', :date => due.strftime("%A"))
+            t('models.preference.due_on', :date => l(due, :format => "%A"))
           else
             t('models.preference.due_in', :days => days)
           end
@@ -232,7 +231,7 @@ module ApplicationHelper
     locale = I18n.locale
     # do not include en as locale since this the available by default
     if locale && locale != :en
-      javascript_include_tag("i18n/jquery.ui.datepicker-#{locale}.js")
+      javascript_include_tag("i18n/jquery.ui.datepicker-#{locale}.js") rescue ""
     end
   end
 

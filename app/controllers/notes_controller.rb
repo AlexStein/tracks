@@ -5,7 +5,7 @@ class NotesController < ApplicationController
   def index
     @all_notes = current_user.notes
     @count = @all_notes.size
-    @page_title = "TRACKS::All notes"
+    @page_title = t('notes.all_notes')
     @source_view = 'note_list'
     respond_to do |format|
       format.html
@@ -15,7 +15,7 @@ class NotesController < ApplicationController
 
   def show
     @note = current_user.notes.find(params['id'])
-    @page_title = "TRACKS::Note " + @note.id.to_s
+    @page_title = t('notes.page_title', :note => @note.id.to_s)
     respond_to do |format|
       format.html
       format.m

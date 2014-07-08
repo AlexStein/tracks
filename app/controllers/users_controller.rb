@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   before_filter :admin_login_required, :only => [ :index, :show, :destroy ]
   skip_before_filter :login_required, :only => [ :new, :create ]
   skip_before_filter :check_for_deprecated_password_hash,
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        @page_title = "TRACKS::Manage Users"
+        @page_title = t('users.page_title')
         @users = User.order('login ASC').paginate :page => params[:page]
         @total_users = User.count
         # When we call users/signup from the admin page we store the URL so that

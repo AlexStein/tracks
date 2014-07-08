@@ -30,10 +30,10 @@ class ContextsController < ApplicationController
       format.autocomplete &render_autocomplete
     end
   end
-  
+
   def show
     set_context_from_params
-    
+
     unless @context.nil?
       @max_completed = current_user.prefs.show_number_completed
       @done = @context.todos.completed.limit(@max_completed).reorder("todos.completed_at DESC, todos.created_at DESC").includes(Todo::DEFAULT_INCLUDES)
@@ -42,7 +42,7 @@ class ContextsController < ApplicationController
 
       @deferred_todos = @context.todos.deferred.includes(Todo::DEFAULT_INCLUDES)
       @pending_todos = @context.todos.pending.includes(Todo::DEFAULT_INCLUDES)
-        
+
       @projects = current_user.projects
       @contexts = current_user.contexts
 
@@ -50,7 +50,7 @@ class ContextsController < ApplicationController
       @contexts_to_show = [@context]
 
       @count = @not_done_todos.count + @deferred_todos.count + @pending_todos.count
-      @page_title = "TRACKS::Context: #{@context.name}"
+      @page_title = t('contexts.page_title', :context => @context.name)
       respond_to do |format|
         format.html
         format.m    &render_context_mobile
@@ -63,7 +63,7 @@ class ContextsController < ApplicationController
       end
     end
   end
-  
+
   def create
     if params[:format] == 'application/xml' && params['exception']
       render_failure "Expected post format is valid xml like so: <context><name>context name</name></context>.", 400
@@ -95,7 +95,7 @@ class ContextsController < ApplicationController
 
     @context.attributes = context_params
     @saved = @context.save
-    @state_saved = set_state_for_update(@new_state) 
+    @state_saved = set_state_for_update(@new_state)
     @saved = @saved && @state_saved
 
     if @saved
@@ -180,7 +180,7 @@ class ContextsController < ApplicationController
 
   def render_contexts_html
     lambda do
-      @page_title = "TRACKS::List Contexts"
+      @page_title = t('contexts.list_contexts')
       @no_active_contexts = @active_contexts.empty?
       @no_hidden_contexts = @hidden_contexts.empty?
       @no_closed_contexts = @closed_contexts.empty?
@@ -196,7 +196,7 @@ class ContextsController < ApplicationController
 
   def render_contexts_mobile
     lambda do
-      @page_title = "TRACKS::List Contexts"
+      @page_title = t('contexts.list_contexts')
       @active_contexts = current_user.contexts.active
       @hidden_contexts = current_user.contexts.hidden
       @down_count = @active_contexts.size + @hidden_contexts.size
@@ -207,7 +207,7 @@ class ContextsController < ApplicationController
 
   def render_context_mobile
     lambda do
-      @page_title = "TRACKS::List actions in "+@context.name
+      @page_title = t('contexts.list_actions', :context => @context.name)
       @not_done = @not_done_todos.select {|t| t.context_id == @context.id }
       @down_count = @not_done.size
       cookies[:mobile_url]= {:value => request.fullpath, :secure => SITE_CONFIG['secure_cookies']}
@@ -215,7 +215,7 @@ class ContextsController < ApplicationController
       render
     end
   end
-  
+
   def render_autocomplete
     lambda do
       render :text => for_autocomplete(current_user.contexts, params[:term])

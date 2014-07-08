@@ -9,7 +9,7 @@ class LoginController < ApplicationController
   protect_from_forgery :except => [:check_expiry, :login]
 
   def login
-    @page_title = "TRACKS::Login"
+    @page_title = t('login.page_title')
     cookies[:preferred_auth] = prefered_auth? unless cookies[:preferred_auth]
     case request.method
     when 'POST'
@@ -57,8 +57,8 @@ class LoginController < ApplicationController
       # If checkbox on login page checked, we don't expire the session after 1 hour
       # of inactivity and we remember this user for future browser sessions
       session['noexpiry'] = params['user_noexpiry']
-      msg = (should_expire_sessions?) ? "will expire after 1 hour of inactivity." : "will not expire."
-      notify :notice, "Login successful: session #{msg}"
+      msg = (should_expire_sessions?) ? t('login.session_will_expire', :hours => 1) : t('login.session_will_not_expire')
+      notify :notice, t('login.successful_with_session_info') +  msg
       cookies[:tracks_login] = { :value => @user.login, :expires => Time.now + 1.year, :secure => SITE_CONFIG['secure_cookies'] }
       unless should_expire_sessions?
         @user.remember_me

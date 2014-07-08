@@ -1,17 +1,17 @@
 <%= pref_with_text_field('prefs', 'date_format') %>
 
-<div class='prefs_example'>This will result in: <span id='prefs.date_format'><%= l(Date.today, :format => current_user.prefs.date_format) %></span></div>
+<div class='prefs_example'><%= t('preferences.this_will_result_in') %>: <span id='prefs.date_format'><%= l(Date.today, :format => current_user.prefs.date_format) %></span></div>
 <br/>
-Or pick one of the following:<br/>
+<%= t('preferences.pick_one_of_the_following') %>:<br/>
 <% %w{default short long longer}.each do |format| %>
 <%= radio_button_tag("date_picker1", t("date.formats.#{format}")) %> <%= l(Date.today, :format => format.to_sym) %> <br/>
 <% end %>
 <br/>
 
 <%= pref_with_text_field('prefs', 'title_date_format') %>
-<div class='prefs_example'>This will result in: <span id='prefs.title_date_format'><%= l(Date.today, :format => current_user.prefs.title_date_format) %></span></div>
+<div class='prefs_example'><%= t('preferences.this_will_result_in') %>: <span id='prefs.title_date_format'><%= l(Date.today, :format => current_user.prefs.title_date_format) %></span></div>
 <br/>
-Or pick one of the following:<br/>
+<%= t('preferences.pick_one_of_the_following') %>:<br/>
 <% %w{default short long longer}.each do |format| %>
 <%= radio_button_tag("date_picker2", t("date.formats.#{format}")) %> <%= l(Date.today, :format => format.to_sym) %> <br/>
 <% end %>

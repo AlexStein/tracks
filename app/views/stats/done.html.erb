@@ -2,7 +2,17 @@
   <div class="container">
     <div class=add_note_link><%= link_to t('common.show_all'), done_todos_path%></div>
     <h2>
-      <%= t('common.last') %> <%= t('states.completed_plural' )%> <%= t('common.actions') %>
+      <%= t('common.last') %>
+      <% if I18n.locale == :fr %>
+        <%= t('common.actions').downcase %>
+        <%= t('states.completed_plural' ).downcase %>)%>
+      <% elsif I18n.locale == :ru %>
+        <%= t('states.completed_plural' ).mb_chars.downcase %>
+        <%= t('common.actions').mb_chars.downcase %>
+      <% else %>
+        <%= t('states.completed_plural' )%>
+        <%= t('common.actions') %>
+      <% end %>      
     </h2>
     <% if @done_recently.empty? -%>
       <div class="message"><p><%= t('todos.no_last_completed_actions') %></p></div>
@@ -14,7 +24,17 @@
   <div class="container">
     <div class=add_note_link><%= link_to t('common.show_all'), done_projects_path%></div>
     <h2>
-      <%= t('common.last') %> <%= t('states.completed_plural' )%> <%= t('common.projects') %>
+      <%= t('common.last' ) %>
+      <% if I18n.locale == :fr %>
+        <%= t('common.projects').downcase %>
+        <%= t('states.completed_plural' ).downcase %>)%>
+      <% elsif I18n.locale == :ru %>
+        <%= t('states.completed_plural' ).mb_chars.downcase %>
+        <%= t('common.projects').mb_chars.downcase %>
+      <% else %>
+        <%= t('states.completed_plural' )%>
+        <%= t('common.projects') %>
+      <% end %>        
     </h2>
     <% if @last_completed_projects.empty? -%>
       <div class="message"><p><%= t('projects.no_last_completed_projects') %></p></div>
@@ -31,7 +51,17 @@
   <div class="container">
     <div class=add_note_link><%= link_to t('common.show_all'), done_recurring_todos_path%></div>
     <h2>
-      <%= t('common.last') %> <%= t('states.completed_plural' )%> <%= t('common.recurring_todos') %>
+      <%= t('common.last' ) %>
+      <% if I18n.locale == :fr %>
+        <%= t('common.recurring_todos').downcase %>
+        <%= t('states.completed_plural' ).downcase %>)%>
+      <% elsif I18n.locale == :ru %>
+        <%= t('states.completed_plural' ).mb_chars.downcase %>
+        <%= t('common.recurring_todos').mb_chars.downcase %>
+      <% else %>
+        <%= t('states.completed_plural' )%>
+        <%= t('common.recurring_todos') %>
+      <% end %>       
     </h2>
     <% if @last_completed_recurring_todos.empty? -%>
       <div class="message"><p><%= t('projects.no_last_completed_recurring_todos') %></p></div>

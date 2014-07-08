@@ -3,7 +3,7 @@ class DataController < ApplicationController
   require 'csv'
   
   def index
-    @page_title = "TRACKS::Export"
+    @page_title = t('data.page_title')
   end
 
   def import
